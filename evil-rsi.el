@@ -64,7 +64,7 @@
 	    (evil-define-key 'motion map "\C-k" 'kill-line)
 	    (evil-define-key 'insert map "\C-k" 'kill-line)
 	    (when (bound-and-true-p auto-complete-mode)
-	      (setq ac-use-menu-map)
+	      (setq ac-use-menu-map t)
 	      (evil-define-key 'insert map "\C-n" 'next-line)
 	      (evil-define-key 'insert map "\C-p" 'previous-line))
             map))
