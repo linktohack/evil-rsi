@@ -1,4 +1,4 @@
-;;; evil-rsi.el --- Comment stuff out. A port of vim-rsi.
+;;; evil-rsi.el --- Use emacs motion keys in evil, inspired by vim-rsi
 
 ;; Copyright (C) 2014 Quang Linh LE
 
@@ -29,12 +29,11 @@
 
 ;;; Commentary:
 ;;
-;; This program emulates `evil-rsi` initially developed by Tim Pope
+;; This program emulates `vim-rsi` initially developed by Tim Pope
 ;; (tpope). It brings some essential `emacs` motion bindings back.
 ;;
 ;; `<C-n>` and `<C-p>` are important keys, and will be enabled only
-;; when `auto-complete` is enable, in this case, it will blindly
-;; enable `ac-use-menu-map`.
+;; when `auto-complete` is enabled.
 
 
 ;;; Example:
