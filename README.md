@@ -43,6 +43,7 @@ to your `init.el`.
 - **NOTE** <kbd>C-n</kbd> and <kbd>C-p</kbd> are important keys, and
   will be enabled only when `auto-complete` is enable, in this case,
   it will blindly enable `ac-use-menu-map`.
+- **NOTE** All <kbd>Meta</kbd> bindings should work as expected.
 
 
 [evil-rsi]: https://github.com/linktohack/evil-rsi
