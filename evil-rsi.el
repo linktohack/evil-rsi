@@ -63,11 +63,12 @@
 	    (evil-define-key 'insert map "\C-f" 'forward-char)
 	    (evil-define-key 'motion map "\C-k" 'kill-line)
 	    (evil-define-key 'insert map "\C-k" 'kill-line)
-	    (when (auto-complete-mode)
-	      (setq ac-use-menu-map)
-	      (evil-define-key 'insert map "\C-n" 'next-line)
-	      (evil-define-key 'insert map "\C-p" 'previous-line))
             map))
+
+(eval-after-load 'auto-complete
+  '(progn
+     (evil-define-key 'insert evil-rsi-mode-map "\C-n" 'next-line)
+     (evil-define-key 'insert evil-rsi-mode-map "\C-p" 'previous-line)))
 
 (provide 'evil-rsi)
 
