@@ -41,8 +41,7 @@ to your `init.el`.
 - <kbd>C-f</kbd> to move forward a character in `insert` state
 - <kbd>C-k</kbd> to delete current line in `insert` state
 - **NOTE** <kbd>C-n</kbd> and <kbd>C-p</kbd> are important keys, and
-  will be enabled only when `auto-complete` is enable, in this case,
-  it will blindly enable `ac-use-menu-map`.
+  will be enabled only when `auto-complete` is loaded.
 - **NOTE** All <kbd>Meta</kbd> bindings should work as expected.
 
 
