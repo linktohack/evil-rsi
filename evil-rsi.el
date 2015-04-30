@@ -65,10 +65,11 @@
 	    (evil-define-key 'insert map "\C-k" 'kill-line)
             map))
 
-(eval-after-load 'auto-complete
-  '(progn
-     (evil-define-key 'insert evil-rsi-mode-map "\C-n" 'next-line)
-     (evil-define-key 'insert evil-rsi-mode-map "\C-p" 'previous-line)))
+(dolist (sym '(auto-complete company))
+  (eval-after-load 'auto-complete
+    '(progn
+       (evil-define-key 'insert evil-rsi-mode-map "\C-n" 'next-line)
+       (evil-define-key 'insert evil-rsi-mode-map "\C-p" 'previous-line))))
 
 (provide 'evil-rsi)
 
