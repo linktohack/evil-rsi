@@ -60,6 +60,7 @@
 	    (evil-define-key 'insert map "\C-e" 'end-of-line)
 	    (evil-define-key 'motion map "\C-e" 'end-of-line)
 	    (evil-define-key 'insert map "\C-f" 'forward-char)
+	    (evil-define-key 'insert map "\C-h" 'delete-backward-char)
 	    (evil-define-key 'motion map "\C-k" 'kill-line)
 	    (evil-define-key 'insert map "\C-k" 'kill-line)
             map))
