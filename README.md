@@ -46,6 +46,7 @@ line to `init.el`
 - <kbd>C-e</kbd> to move to end of line in all states
 - <kbd>C-f</kbd> to move forward a character in `insert` state
 - <kbd>C-k</kbd> to delete current line in `insert` state
+- <kbd>C-S-k</kbd> to insert digraph in `insert` state
 - <kbd>C-h</kbd> to delete backward a character in `insert` state
 - **NOTE** <kbd>C-n</kbd> and <kbd>C-p</kbd> are important keys, and
   will be enabled only when `auto-complete` or `company` is loaded.
