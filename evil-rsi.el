@@ -63,6 +63,7 @@
             (evil-define-key 'insert map "\C-h" 'delete-backward-char)
             (evil-define-key 'motion map "\C-k" 'kill-line)
             (evil-define-key 'insert map "\C-k" 'kill-line)
+            (evil-define-key 'insert map (kbd "C-S-k") 'evil-insert-digraph)
             map))
 
 (dolist (sym '(auto-complete company))
