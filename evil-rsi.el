@@ -64,7 +64,17 @@
             (evil-define-key 'motion map "\C-k" 'kill-line)
             (evil-define-key 'insert map "\C-k" 'kill-line)
             (evil-define-key 'insert map (kbd "C-S-k") 'evil-insert-digraph)
-            map))
+            map)
+  (if evil-rsi-mode
+      (progn
+        (when evil-want-C-w-delete
+          (define-key minibuffer-local-map [remap kill-region] 'evil-delete-backward-word))
+        (define-key evil-ex-completion-map [remap evil-insert-digraph] 'kill-line)
+        (define-key evil-ex-completion-map "\C-S-k" 'evil-insert-digraph)
+        (define-key evil-ex-completion-map "\C-a" 'beginning-of-line))
+    (define-key minibuffer-local-map [remap kill-region] nil)
+    (define-key evil-ex-completion-map [remap evil-insert-digraph] nil)
+    (define-key evil-ex-completion-map "\C-a" 'evil-ex-completion)))
 
 (dolist (sym '(auto-complete company))
   (eval-after-load sym
