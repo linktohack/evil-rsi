@@ -1,9 +1,26 @@
 # evil-rsi
-
 [evil-rsi] is intended to be a port of [vim-rsi].
 
 It brings some essential `emacs` motion bindings (and potentially
 [RSI]...) back.
+
+## Retired, there is a better approach as of Dec 2015
+
+Check
+[this commit](https://bitbucket.org/lyro/evil/commits/99c0cfd15b86493121906bf6854c3a4c9dd8c678)
+for more detail.
+
+Basically you will want something like this in your `init.el`:
+
+```emacs-lisp
+(setq evil-insert-state-bindings
+      '(("C-v" . quoted-insert)
+       ("C-S-k" . evil-insert-digraph)
+       ("C-r" . evil-paste-from-register)
+       ("C-w" . evil-delete-backward-word)
+       ("C-o" . evil-execute-in-normal-state)))
+(evil-mode 1)
+```
 
 ## Install
 
