@@ -22,6 +22,29 @@ Basically you will want something like this in your `init.el`:
 (evil-mode 1)
 ```
 
+A more sophisticated example:
+```emacs-lisp
+(use-package evil
+  :init
+  (setq evil-insert-state-bindings nil)
+  :config
+  (evil-mode 1)
+  (bind-keys :map evil-insert-state-map
+             ("C-v" . quoted-insert)
+             ("C-S-k" . evil-insert-digraph)
+             ("C-r" . evil-paste-from-register)
+             ("C-w" . evil-delete-backward-word)
+             ("C-o" . evil-execute-in-normal-state))
+  (bind-keys :map evil-motion-state-map
+             ("C-e" . end-of-line)
+             ("C-k" . kill-line))
+  (bind-key "C-o" 'evil-execute-in-normal-state evil-emacs-state-map)
+  (bind-key [remap kill-region] 'evil-delete-backward-word minibuffer-local-map)
+  (bind-keys :map evil-ex-completion-map
+             ([remap evil-insert-digraph] . kill-line)
+             ("\C-a" . beginning-of-line)))
+```
+
 ## Install
 
 The easiest way is to install is with
