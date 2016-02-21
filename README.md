@@ -4,46 +4,12 @@
 It brings some essential `emacs` motion bindings (and potentially
 [RSI]...) back.
 
-## Retired, there is a better approach as of Dec 2015
+## Continue support as of Feb 2016
 
-Check
+After
 [this commit](https://bitbucket.org/lyro/evil/commits/99c0cfd15b86493121906bf6854c3a4c9dd8c678)
-for more detail.
-
-Basically you will want something like this in your `init.el`:
-
-```emacs-lisp
-(setq evil-insert-state-bindings
-      '(("C-v" . quoted-insert)
-       ("C-S-k" . evil-insert-digraph)
-       ("C-r" . evil-paste-from-register)
-       ("C-w" . evil-delete-backward-word)
-       ("C-o" . evil-execute-in-normal-state)))
-(evil-mode 1)
-```
-
-A more sophisticated example:
-```emacs-lisp
-(use-package evil
-  :init
-  (setq evil-insert-state-bindings nil)
-  :config
-  (evil-mode 1)
-  (bind-keys :map evil-insert-state-map
-             ("C-v" . quoted-insert)
-             ("C-S-k" . evil-insert-digraph)
-             ("C-r" . evil-paste-from-register)
-             ("C-w" . evil-delete-backward-word)
-             ("C-o" . evil-execute-in-normal-state))
-  (bind-keys :map evil-motion-state-map
-             ("C-e" . end-of-line)
-             ("C-k" . kill-line))
-  (bind-key "C-o" 'evil-execute-in-normal-state evil-emacs-state-map)
-  (bind-key [remap kill-region] 'evil-delete-backward-word minibuffer-local-map)
-  (bind-keys :map evil-ex-completion-map
-             ([remap evil-insert-digraph] . kill-line)
-             ("\C-a" . beginning-of-line)))
-```
+I decided to discontinue this minor mode, but I'd like to have only
+one line configuration instead of ten...
 
 ## Install
 
@@ -56,27 +22,17 @@ M-: (package-install 'evil-rsi)
 
 Then try it with:
 
-```lisp
+```emacs-lisp
 M-x evil-rsi-mode
 ```
 
 To enable `evil-rsi` permanently, add
 
-```lisp
+```emacs-lisp
 (evil-rsi-mode)
 ```
 
 to your `init.el`.
-
-Or manually clone [evil-rsi] to your `loadpath` and add those
-line to `init.el`
-
-```lisp
-(add-to-list 'load-path "/path/to/evil-rsi")
-(require 'evil-rsi)
-(evil-rsi-mode)
-```
-
 
 ## Default key bindings
 
@@ -88,8 +44,9 @@ line to `init.el`
 - <kbd>C-k</kbd> to delete current line in `insert` state
 - <kbd>C-S-k</kbd> to insert digraph in `insert` state
 - <kbd>C-h</kbd> to delete backward a character in `insert` state
-- **NOTE** <kbd>C-n</kbd> and <kbd>C-p</kbd> are important keys, and
-  will be enabled only when `auto-complete` or `company` is loaded.
+- **NOTE** For <kbd>C-n</kbd> and <kbd>C-p</kbd> please have a look at
+  `dabbrev-expand` (default binds to <kbd>M-/</kbd>), `hippie-expand`,
+  `auto-complete` or `company`.
 - **NOTE** All <kbd>Meta</kbd> bindings should work as expected.
 
 

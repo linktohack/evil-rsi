@@ -53,34 +53,26 @@
   :lighter " rsi"
   :global t
   :keymap (let ((map (make-sparse-keymap)))
-            (evil-define-key 'insert map "\C-a" #'beginning-of-line)
-            (evil-define-key 'motion map "\C-a" #'beginning-of-line)
-            (evil-define-key 'insert map "\C-b" #'backward-char)
-            (evil-define-key 'insert map "\C-d" #'delete-char)
-            (evil-define-key 'insert map "\C-e" #'end-of-line)
-            (evil-define-key 'motion map "\C-e" #'end-of-line)
-            (evil-define-key 'insert map "\C-f" #'forward-char)
-            (evil-define-key 'insert map "\C-h" #'delete-backward-char)
-            (evil-define-key 'motion map "\C-k" #'kill-line)
-            (evil-define-key 'insert map "\C-k" #'kill-line)
+            (evil-define-key 'insert map "\C-o" #'evil-execute-in-normal-state)
+            (evil-define-key 'insert map "\C-r" #'evil-paste-from-register)
+            (evil-define-key 'insert map "\C-v" #'quoted-insert)
             (evil-define-key 'insert map (kbd "C-S-k") #'evil-insert-digraph)
+            (evil-define-key 'motion map "\C-e" #'end-of-line)
+            (when evil-want-C-w-delete
+              (evil-define-key 'insert map "\C-w" #'evil-delete-backward-word))
             map)
   (if evil-rsi-mode
       (progn
+        (evil-update-insert-state-bindings nil t)
         (when evil-want-C-w-delete
           (define-key minibuffer-local-map [remap kill-region] #'evil-delete-backward-word))
         (define-key evil-ex-completion-map [remap evil-insert-digraph] #'kill-line)
         (define-key evil-ex-completion-map "\C-S-k" #'evil-insert-digraph)
         (define-key evil-ex-completion-map "\C-a" #'beginning-of-line))
+    (evil-update-insert-state-bindings)
     (define-key minibuffer-local-map [remap kill-region] nil)
     (define-key evil-ex-completion-map [remap evil-insert-digraph] nil)
     (define-key evil-ex-completion-map "\C-a" #'evil-ex-completion)))
-
-(dolist (sym '(auto-complete company))
-  (eval-after-load sym
-    '(progn
-       (evil-define-key 'insert evil-rsi-mode-map "\C-n" #'next-line)
-       (evil-define-key 'insert evil-rsi-mode-map "\C-p" #'previous-line))))
 
 (provide 'evil-rsi)
 
