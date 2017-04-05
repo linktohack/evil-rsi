@@ -4,13 +4,6 @@
 It brings some essential `emacs` motion bindings (and potentially
 [RSI]...) back.
 
-## Continue support as of Feb 2016
-
-After
-[this commit](https://bitbucket.org/lyro/evil/commits/99c0cfd15b86493121906bf6854c3a4c9dd8c678)
-I decided to discontinue this minor mode, but I'd like to have only
-one line configuration instead of ten...
-
 ## Install
 
 The easiest way is to install is with
